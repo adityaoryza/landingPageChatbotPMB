@@ -47,6 +47,15 @@
         gap: 2rem;
       }
 
+      .chat-container {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        width: 100%;
+        max-width: 350px;
+      }
+
       .info-box {
         flex: 1;
         min-width: 300px;
@@ -152,22 +161,13 @@
       </div>
 
       <div class="chat-container">
-        <link
-          rel="stylesheet"
-          href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css"
-        />
-        <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+        <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
         <df-messenger
-          location="us-central1"
-          project-id="chatbotpmbuad-459309"
-          agent-id="cb09d9c9-453c-46ab-8ffd-cffa283a40ab"
+          intent="WELCOME"
+          chat-title="pmbuad"
+          agent-id="48ff19fd-c15d-4611-a6c7-c0f709181c49"
           language-code="id"
-          max-query-length="-1"
-        >
-          <df-messenger-chat-bubble
-            chat-title="Chatbot PMB Universitas Ahmad Dahlan"
-          ></df-messenger-chat-bubble>
-        </df-messenger>
+        ></df-messenger>
       </div>
     </div>
 
@@ -175,19 +175,5 @@
       <p>© 2023 Universitas Ahmad Dahlan - Layanan Penerimaan Mahasiswa Baru</p>
       <p>Email: pmb@uad.ac.id | Telp: (0274) 563515</p>
     </footer>
-
-    <style>
-      df-messenger {
-        z-index: 999;
-        position: fixed;
-        --df-messenger-font-color: #000000;
-        --df-messenger-font-family: Google Sans;
-        --df-messenger-chat-background: #c6dafc;
-        --df-messenger-message-user-background: #fce8b2;
-        --df-messenger-message-bot-background: #c8e6c9;
-        bottom: 16px;
-        right: 16px;
-      }
-    </style>
   </body>
 </html>
