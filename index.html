@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Penerimaan Mahasiswa Baru – Universitas Ahmad Dahlan</title>
-    <!-- Tailwind CSS via CDN makes it easy to build responsive layouts -->
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="font-sans antialiased text-gray-800">
@@ -26,29 +25,25 @@
           <a href="#prestasi" class="hover:text-blue-700">Prestasi</a>
           <a href="#faq" class="hover:text-blue-700">FAQ</a>
         </nav>
-        <!-- Mobile menu button -->
         <button
           class="md:hidden text-gray-600 hover:text-gray-800 focus:outline-none"
           id="menuBtn"
         >
-          <!-- simple hamburger icon -->
           <svg
             class="w-6 h-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
               d="M4 6h16M4 12h16M4 18h16"
-            ></path>
+            />
           </svg>
         </button>
       </div>
-      <!-- Mobile navigation panel (hidden by default) -->
       <nav
         id="mobileMenu"
         class="md:hidden hidden bg-white border-t border-gray-200"
@@ -63,6 +58,39 @@
         </ul>
       </nav>
     </header>
+
+    <!-- Image carousel -->
+    <section id="carousel" class="relative">
+      <div class="relative overflow-hidden h-64 sm:h-80 md:h-96 lg:h-[28rem]">
+        <div
+          class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-100"
+        >
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/web-baner-pmb-2025-v2.png"
+            alt="Banner PMB 1"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0"
+        >
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/web-baner-2025-v2.2.png"
+            alt="Banner PMB 2"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0"
+        >
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/web-baner-SBMPTMU-2025-2.png"
+            alt="Banner PMB 3"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </section>
 
     <!-- Hero/Search section -->
     <section class="bg-blue-50 py-12" id="hero">
@@ -98,9 +126,8 @@
         class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8"
       >
         <div class="md:w-1/2">
-          <!-- Hero image illustrating student life -->
           <img
-            src="hero.png"
+            src="https://pmb.uad.ac.id/wp-content/uploads/kenapa-pilih-uad-1.png"
             alt="Mahasiswa UAD"
             class="w-full h-auto rounded-lg shadow-lg"
           />
@@ -111,8 +138,8 @@
           </h2>
           <ul class="space-y-4 text-gray-700">
             <li class="flex items-start">
-              <span class="mt-1 mr-3 text-blue-600"
-                ><svg
+              <span class="mt-1 mr-3 text-blue-600">
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -131,8 +158,8 @@
               >
             </li>
             <li class="flex items-start">
-              <span class="mt-1 mr-3 text-blue-600"
-                ><svg
+              <span class="mt-1 mr-3 text-blue-600">
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -151,8 +178,8 @@
               >
             </li>
             <li class="flex items-start">
-              <span class="mt-1 mr-3 text-blue-600"
-                ><svg
+              <span class="mt-1 mr-3 text-blue-600">
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -186,12 +213,36 @@
         <div
           class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center justify-items-center"
         >
-          <img src="banpt.png" alt="BAN-PT" class="h-20 w-auto" />
-          <img src="lamkes.png" alt="LAM Kes" class="h-20 w-auto" />
-          <img src="lamdik.png" alt="LAM Dik" class="h-20 w-auto" />
-          <img src="ristek.png" alt="Ristek" class="h-20 w-auto" />
-          <img src="sinta.png" alt="SINTA" class="h-20 w-auto" />
-          <img src="uigreen.png" alt="UI Green Metric" class="h-20 w-auto" />
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/BAN-PT.png"
+            alt="BAN-PT"
+            class="h-20 w-auto"
+          />
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/LAMKES-1.png"
+            alt="LAM Kes"
+            class="h-20 w-auto"
+          />
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/LAMDIK-1.png"
+            alt="LAM Dik"
+            class="h-20 w-auto"
+          />
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/Ristek.png"
+            alt="Ristek"
+            class="h-20 w-auto"
+          />
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/SINTA.png"
+            alt="SINTA"
+            class="h-20 w-auto"
+          />
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/UI-Green-Metric.png"
+            alt="UI Green Metric"
+            class="h-20 w-auto"
+          />
         </div>
       </div>
     </section>
@@ -593,13 +644,30 @@
       </div>
     </footer>
 
-    <!-- Simple script to toggle mobile menu -->
+    <!-- ... Bagian lain dari halaman tetap sama seperti versi sebelumnya ... -->
+
+    <!-- Script -->
     <script>
       const menuBtn = document.getElementById("menuBtn");
       const mobileMenu = document.getElementById("mobileMenu");
       menuBtn.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
       });
+
+      // Simple automatic carousel rotation
+      (function () {
+        const slides = document.querySelectorAll("#carousel .carousel-slide");
+        let current = 0;
+        if (slides.length > 1) {
+          setInterval(() => {
+            slides[current].classList.remove("opacity-100");
+            slides[current].classList.add("opacity-0");
+            current = (current + 1) % slides.length;
+            slides[current].classList.remove("opacity-0");
+            slides[current].classList.add("opacity-100");
+          }, 5000);
+        }
+      })();
     </script>
   </body>
 </html>
