@@ -4,7 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Penerimaan Mahasiswa Baru – Universitas Ahmad Dahlan</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Dialogflow Messenger default theme -->
+    <link
+      rel="stylesheet"
+      href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css"
+    />
+    <!-- Dialogflow Messenger component -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
   </head>
   <body class="font-sans antialiased text-gray-800">
     <!-- Header -->
@@ -669,5 +678,30 @@
         }
       })();
     </script>
+
+    <!-- Dialogflow Messenger widget -->
+    <df-messenger
+      project-id="pmbuad"
+      agent-id="fe9ee6cc-7a00-42b2-93ea-c1618c7723e1"
+      language-code="id"
+      max-query-length="-1"
+    >
+      <df-messenger-chat-bubble
+        chat-title="chatbotpmb"
+      ></df-messenger-chat-bubble>
+    </df-messenger>
+    <style>
+      df-messenger {
+        z-index: 999;
+        position: fixed;
+        --df-messenger-font-color: #000;
+        --df-messenger-font-family: Google Sans;
+        --df-messenger-chat-background: #f3f6fc;
+        --df-messenger-message-user-background: #d3e3fd;
+        --df-messenger-message-bot-background: #fff;
+        bottom: 16px;
+        right: 16px;
+      }
+    </style>
   </body>
 </html>
