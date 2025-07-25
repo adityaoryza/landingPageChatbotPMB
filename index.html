@@ -3,213 +3,671 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chatbot PMB UAD</title>
-    <!-- Icons & Fonts -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-
-    <!-- Dialogflow Messenger Default Theme (overridden below) -->
-    <link
-      rel="stylesheet"
-      href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css"
-    />
-
-    <style>
-      /* ---------- Global Reset & Typography ---------- */
-      *,
-      *::before,
-      *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f5f5f5;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        color: #555;
-      }
-
-      /* ---------- Header ---------- */
-      header {
-        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-        color: #fff;
-        padding: 2rem 1rem 2.5rem;
-        text-align: center;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-      }
-
-      .logo {
-        height: 64px;
-        margin-bottom: 1rem;
-        filter: brightness(0) invert(1);
-      }
-
-      h1 {
-        font-size: clamp(1.6rem, 4vw, 2.2rem);
-        margin-bottom: 0.25rem;
-      }
-
-      header p {
-        opacity: 0.9;
-        font-size: 1rem;
-      }
-
-      /* ---------- Main Container ---------- */
-      .container {
-        width: 100%;
-        max-width: 1200px;
-        margin: -3rem auto 2rem; /* pulls up to overlap header */
-        padding: 0 1rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-      }
-
-      .info-box {
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-        padding: 2rem 1.75rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        transition: transform 0.3s ease;
-      }
-
-      .info-box:hover {
-        transform: translateY(-4px);
-      }
-
-      h2 {
-        color: #2c3e50;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-      }
-
-      p {
-        line-height: 1.6;
-        margin-bottom: 1rem;
-      }
-
-      /* ---------- Features List ---------- */
-      .features {
-        margin-top: 1rem;
-      }
-
-      .feature-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 0.75rem;
-      }
-
-      .feature-icon {
-        color: #3498db;
-        margin-right: 0.75rem;
-        font-size: 1.1rem;
-        flex-shrink: 0;
-      }
-
-      /* ---------- Footer ---------- */
-      footer {
-        background-color: #2c3e50;
-        color: #fff;
-        text-align: center;
-        padding: 1.25rem 1rem;
-        margin-top: auto;
-        font-size: 0.95rem;
-      }
-
-      /* ---------- Responsive Adjustments ---------- */
-      @media (max-width: 600px) {
-        .info-box {
-          padding: 1.5rem;
-        }
-      }
-
-      /* ---------- Dialogflow Widget Overrides ---------- */
-      df-messenger {
-        --df-messenger-font-color: #000;
-        --df-messenger-font-family: "Google Sans", "Segoe UI", Arial, sans-serif;
-        --df-messenger-chat-background: #f3f6fc;
-        --df-messenger-message-user-background: #d3e3fd;
-        --df-messenger-message-bot-background: #ffffff;
-
-        position: fixed;
-        right: 16px;
-        bottom: 16px;
-        z-index: 999;
-      }
-    </style>
+    <title>Penerimaan Mahasiswa Baru – Universitas Ahmad Dahlan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <!-- ---------- Header ---------- -->
-    <header>
-      <img
-        src="https://uad.ac.id/wp-content/uploads/logo-warna.png"
-        alt="Logo UAD"
-        class="logo"
-      />
-      <h1>Chatbot PMB UAD</h1>
-      <p>Layanan informasi penerimaan mahasiswa baru</p>
+  <body class="font-sans antialiased text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <div class="flex items-center space-x-3">
+          <span class="text-2xl font-bold text-blue-800"
+            >Penerimaan Mahasiswa Baru</span
+          >
+        </div>
+        <nav class="hidden md:flex space-x-8">
+          <a href="#pendaftaran" class="hover:text-blue-700">Pendaftaran</a>
+          <a href="#program" class="hover:text-blue-700">Program Studi</a>
+          <a href="#biaya" class="hover:text-blue-700">Biaya</a>
+          <a href="#fasilitas" class="hover:text-blue-700">Fasilitas</a>
+          <a href="#prestasi" class="hover:text-blue-700">Prestasi</a>
+          <a href="#faq" class="hover:text-blue-700">FAQ</a>
+        </nav>
+        <button
+          class="md:hidden text-gray-600 hover:text-gray-800 focus:outline-none"
+          id="menuBtn"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+      <nav
+        id="mobileMenu"
+        class="md:hidden hidden bg-white border-t border-gray-200"
+      >
+        <ul class="px-4 py-2 space-y-2">
+          <li><a href="#pendaftaran" class="block py-1">Pendaftaran</a></li>
+          <li><a href="#program" class="block py-1">Program Studi</a></li>
+          <li><a href="#biaya" class="block py-1">Biaya</a></li>
+          <li><a href="#fasilitas" class="block py-1">Fasilitas</a></li>
+          <li><a href="#prestasi" class="block py-1">Prestasi</a></li>
+          <li><a href="#faq" class="block py-1">FAQ</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <!-- ---------- Main Content ---------- -->
-    <main class="container">
-      <section class="info-box">
-        <h2>Selamat Datang</h2>
-        <p>Chatbot ini siap membantu Anda mendapatkan informasi tentang:</p>
+    <!-- Image carousel -->
+    <section id="carousel" class="relative">
+      <div class="relative overflow-hidden h-64 sm:h-80 md:h-96 lg:h-[28rem]">
+        <div
+          class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-100"
+        >
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/web-baner-pmb-2025-v2.png"
+            alt="Banner PMB 1"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0"
+        >
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/web-baner-2025-v2.2.png"
+            alt="Banner PMB 2"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          class="carousel-slide absolute inset-0 transition-opacity duration-1000 opacity-0"
+        >
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/web-baner-SBMPTMU-2025-2.png"
+            alt="Banner PMB 3"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </section>
 
-        <div class="features">
-          <div class="feature-item">
-            <i class="fas fa-road feature-icon"></i>
-            <span>Jalur masuk dan persyaratan</span>
+    <!-- Hero/Search section -->
+    <section class="bg-blue-50 py-12" id="hero">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h1
+          class="text-3xl sm:text-4xl font-bold text-blue-800 mb-4 leading-tight"
+        >
+          Mulai Perjalanan Akademikmu di Universitas Ahmad Dahlan
+        </h1>
+        <p class="text-gray-600 mb-6">
+          Cari informasi mengenai jalur seleksi, beasiswa, atau program studi
+          yang kamu minati.
+        </p>
+        <form class="flex flex-col sm:flex-row justify-center gap-2">
+          <input
+            type="text"
+            placeholder="Ketik PMDK, BEASISWA"
+            class="flex-1 px-4 py-3 rounded-md border border-gray-300 focus:ring focus:ring-blue-300 focus:outline-none"
+          />
+          <button
+            type="submit"
+            class="px-6 py-3 rounded-md bg-blue-800 text-white font-semibold hover:bg-blue-700"
+          >
+            Cari
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Mengapa UAD section -->
+    <section class="py-12 bg-white" id="mengapa">
+      <div
+        class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8"
+      >
+        <div class="md:w-1/2">
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/kenapa-pilih-uad-1.png"
+            alt="Mahasiswa UAD"
+            class="w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
+        <div class="md:w-1/2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-blue-800 mb-4">
+            Mengapa Universitas Ahmad Dahlan?
+          </h2>
+          <ul class="space-y-4 text-gray-700">
+            <li class="flex items-start">
+              <span class="mt-1 mr-3 text-blue-600">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  class="w-5 h-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+              <span
+                >Perguruan tinggi swasta terbaik di Indonesia terakreditasi
+                <strong>UNGGUL</strong></span
+              >
+            </li>
+            <li class="flex items-start">
+              <span class="mt-1 mr-3 text-blue-600">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  class="w-5 h-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+              <span
+                >Lebih dari 100 kegiatan kemahasiswaan sesuai minat dan bakat
+                untuk peningkatan soft skill</span
+              >
+            </li>
+            <li class="flex items-start">
+              <span class="mt-1 mr-3 text-blue-600">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  class="w-5 h-5"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414L9 11.586l6.293-6.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+              <span
+                >61 program studi terakreditasi yang bekerja sama dengan
+                universitas dan perusahaan terkemuka nasional maupun
+                internasional</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apresiasi section -->
+    <section class="py-12 bg-gray-50" id="apresiasi">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-800 mb-2">
+          Apresiasi
+        </h2>
+        <p class="text-gray-600 mb-8">Universitas Ahmad Dahlan</p>
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center justify-items-center"
+        >
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/BAN-PT.png"
+            alt="BAN-PT"
+            class="h-20 w-auto"
+          />
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/LAMKES-1.png"
+            alt="LAM Kes"
+            class="h-20 w-auto"
+          />
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/LAMDIK-1.png"
+            alt="LAM Dik"
+            class="h-20 w-auto"
+          />
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/Ristek.png"
+            alt="Ristek"
+            class="h-20 w-auto"
+          />
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/SINTA.png"
+            alt="SINTA"
+            class="h-20 w-auto"
+          />
+          <img
+            src="https://pmb.uad.ac.id/wp-content/uploads/UI-Green-Metric.png"
+            alt="UI Green Metric"
+            class="h-20 w-auto"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Jalur Seleksi section -->
+    <section class="py-12 bg-white" id="jalur-seleksi">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-blue-800 mb-8 text-center"
+        >
+          Jalur Seleksi
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <div
+            class="rounded-xl overflow-hidden shadow-lg p-6 text-white bg-gradient-to-br from-blue-700 to-blue-500 flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-xl font-bold mb-2">Seleksi Bebas Tes</h3>
+              <p class="text-sm opacity-90 mb-4">
+                Jalur seleksi tanpa tes masuk dengan mempertimbangkan prestasi
+                akademik dan non-akademik.
+              </p>
+            </div>
+            <a
+              href="#"
+              class="mt-auto inline-block bg-white text-blue-700 px-4 py-2 rounded-md font-semibold text-center hover:bg-gray-100"
+              >Daftar</a
+            >
           </div>
-          <div class="feature-item">
-            <i class="fas fa-money-bill-wave feature-icon"></i>
-            <span>Biaya kuliah dan beasiswa</span>
+          <!-- Card 2 -->
+          <div
+            class="rounded-xl overflow-hidden shadow-lg p-6 text-white bg-gradient-to-br from-cyan-600 to-cyan-400 flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-xl font-bold mb-2">Seleksi Tes</h3>
+              <p class="text-sm opacity-90 mb-4">
+                Jalur seleksi melalui tes akademik berbasis komputer yang
+                diselenggarakan oleh UAD.
+              </p>
+            </div>
+            <a
+              href="#"
+              class="mt-auto inline-block bg-white text-cyan-700 px-4 py-2 rounded-md font-semibold text-center hover:bg-gray-100"
+              >Daftar</a
+            >
           </div>
-          <div class="feature-item">
-            <i class="fas fa-calendar-alt feature-icon"></i>
-            <span>Jadwal penting pendaftaran</span>
+          <!-- Card 3 -->
+          <div
+            class="rounded-xl overflow-hidden shadow-lg p-6 text-white bg-gradient-to-br from-yellow-400 to-yellow-300 flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-xl font-bold mb-2">Seleksi Beasiswa</h3>
+              <p class="text-sm opacity-90 mb-4">
+                Kesempatan meraih beasiswa penuh maupun parsial melalui jalur
+                seleksi khusus beasiswa.
+              </p>
+            </div>
+            <a
+              href="#"
+              class="mt-auto inline-block bg-white text-yellow-600 px-4 py-2 rounded-md font-semibold text-center hover:bg-gray-100"
+              >Daftar</a
+            >
           </div>
-          <div class="feature-item">
-            <i class="fas fa-question-circle feature-icon"></i>
-            <span>FAQ seputar PMB</span>
+          <!-- Card 4 -->
+          <div
+            class="rounded-xl overflow-hidden shadow-lg p-6 text-white bg-gradient-to-br from-indigo-600 to-blue-500 flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-xl font-bold mb-2">Seleksi Kedokteran</h3>
+              <p class="text-sm opacity-90 mb-4">
+                Jalur khusus untuk program studi Kedokteran dengan proses
+                seleksi yang ketat.
+              </p>
+            </div>
+            <a
+              href="#"
+              class="mt-auto inline-block bg-white text-indigo-700 px-4 py-2 rounded-md font-semibold text-center hover:bg-gray-100"
+              >Daftar</a
+            >
           </div>
         </div>
+        <!-- Additional program categories -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+          <div class="text-center">
+            <h4 class="font-semibold text-blue-800 mb-2">Program Profesi</h4>
+            <a
+              href="#"
+              class="inline-block px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-600"
+              >Selengkapnya</a
+            >
+          </div>
+          <div class="text-center">
+            <h4 class="font-semibold text-blue-800 mb-2">Program RPL</h4>
+            <a
+              href="#"
+              class="inline-block px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-600"
+              >Selengkapnya</a
+            >
+          </div>
+          <div class="text-center">
+            <h4 class="font-semibold text-blue-800 mb-2">Program Magister</h4>
+            <a
+              href="#"
+              class="inline-block px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-600"
+              >Selengkapnya</a
+            >
+          </div>
+          <div class="text-center">
+            <h4 class="font-semibold text-blue-800 mb-2">Program Doktoral</h4>
+            <a
+              href="#"
+              class="inline-block px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-600"
+              >Selengkapnya</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <p>
-          Silakan gunakan chatbot di pojok kanan bawah untuk bertanya kapan
-          saja. Layanan tersedia 24 jam.
+    <!-- Informasi Beasiswa section -->
+    <section class="py-12 bg-blue-50" id="beasiswa">
+      <div
+        class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8"
+      >
+        <div class="md:w-1/2 order-2 md:order-1">
+          <h2 class="text-2xl sm:text-3xl font-bold text-blue-800 mb-4">
+            Informasi Beasiswa
+          </h2>
+          <p class="text-gray-700 mb-4">
+            Pendaftaran beasiswa sekarang dibuka untuk melanjutkan studi Anda di
+            Universitas Ahmad Dahlan. Kuota beasiswa terbatas dan pendaftar
+            hanya bisa memilih program studi sesuai dengan yang ditawarkan.
+          </p>
+          <a
+            href="#"
+            class="inline-block px-5 py-3 bg-blue-700 text-white rounded-md font-semibold hover:bg-blue-600"
+            >Cek Selengkapnya</a
+          >
+        </div>
+        <div class="md:w-1/2 order-1 md:order-2">
+          <!-- Reuse hero image for visual appeal -->
+          <img
+            src="hero.png"
+            alt="Informasi Beasiswa"
+            class="w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Lokasi Kampus section -->
+    <section class="py-12 bg-white" id="lokasi">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-blue-800 mb-8 text-center"
+        >
+          Lokasi Kampus UAD
+        </h2>
+        <p class="text-center text-gray-600 mb-8">
+          UAD memiliki beberapa kampus yang tersebar di Yogyakarta.
         </p>
-      </section>
-    </main>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Kampus 1 -->
+          <div class="border rounded-lg p-6 shadow-sm">
+            <h3 class="font-semibold text-blue-800 mb-2">Kampus 1</h3>
+            <p class="text-gray-700 text-sm">
+              Jalan Kapas No.9, Semaki, Kec. Umbulharjo, Kota Yogyakarta, Daerah
+              Istimewa Yogyakarta 55166
+            </p>
+          </div>
+          <!-- Kampus 2 -->
+          <div class="border rounded-lg p-6 shadow-sm">
+            <h3 class="font-semibold text-blue-800 mb-2">Kampus 2</h3>
+            <p class="text-gray-700 text-sm">
+              Jalan Pramuka No. 42, Pandeyan, Kec. Umbulharjo, Kota Yogyakarta,
+              Daerah Istimewa Yogyakarta 55161
+            </p>
+          </div>
+          <!-- Kampus 3 -->
+          <div class="border rounded-lg p-6 shadow-sm">
+            <h3 class="font-semibold text-blue-800 mb-2">Kampus 3</h3>
+            <p class="text-gray-700 text-sm">
+              Jalan Prof. Dr. Soepomo, S.H., Warungboto, Kec. Umbulharjo, Kota
+              Yogyakarta, Daerah Istimewa Yogyakarta 55164
+            </p>
+          </div>
+          <!-- Kampus 4 -->
+          <div class="border rounded-lg p-6 shadow-sm">
+            <h3 class="font-semibold text-blue-800 mb-2">Kampus 4</h3>
+            <p class="text-gray-700 text-sm">
+              Jalan Ahmad Yani, Tamanan, Kec. Banguntapan, Kab. Bantul, Daerah
+              Istimewa Yogyakarta 55191
+            </p>
+          </div>
+          <!-- Kampus 5 -->
+          <div class="border rounded-lg p-6 shadow-sm">
+            <h3 class="font-semibold text-blue-800 mb-2">Kampus 5</h3>
+            <p class="text-gray-700 text-sm">
+              Jalan Ki Ageng Pemanahan No.19, Sorosutan, Kec. Umbulharjo, Kota
+              Yogyakarta, Daerah Istimewa Yogyakarta 55162
+            </p>
+          </div>
+          <!-- Kampus 6 -->
+          <div class="border rounded-lg p-6 shadow-sm">
+            <h3 class="font-semibold text-blue-800 mb-2">Kampus 6</h3>
+            <p class="text-gray-700 text-sm">
+              Jalan KH. Ahmad Dahlan, Triharjo, Kec. Wates, Kab. Kulon Progo,
+              Daerah Istimewa Yogyakarta 55651
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- ---------- Footer ---------- -->
-    <footer>© 2025 Universitas Ahmad Dahlan – PMB. All rights reserved.</footer>
+    <!-- Call to Action section -->
+    <section class="py-12 bg-blue-700 text-white">
+      <div
+        class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-8"
+      >
+        <div class="md:w-2/3">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-2">
+            Ayo Bergabung dengan Universitas Ahmad Dahlan
+          </h2>
+          <p class="mb-4">
+            Raih kesempatan emasmu dengan bergabung di Universitas Ahmad Dahlan
+            dan wujudkan masa depan cemerlang bersama Dahlan Muda.
+          </p>
+          <a
+            href="#"
+            class="inline-block bg-yellow-400 text-blue-800 px-6 py-3 rounded-md font-semibold hover:bg-yellow-300"
+            >Ayo Gabung Sekarang</a
+          >
+        </div>
+        <div class="md:w-1/3">
+          <!-- Another photo for CTA (reuse hero as placeholder) -->
+          <img
+            src="hero.png"
+            alt="Ayo Bergabung"
+            class="w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+    </section>
 
-    <!-- ---------- Dialogflow Messenger Script ---------- -->
-    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+    <!-- FAQ section -->
+    <section class="py-12 bg-gray-50" id="faq">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-blue-800 mb-8 text-center"
+        >
+          Frequently Asked Question
+        </h2>
+        <div class="space-y-4">
+          <!-- Each question uses the <details> element for interactive disclosure -->
+          <details class="bg-white border rounded-lg p-4">
+            <summary class="font-semibold text-blue-700 cursor-pointer">
+              Gagal Membuat Akun Pendaftaran
+            </summary>
+            <p class="mt-2 text-gray-700 text-sm">
+              Pastikan seluruh data yang dimasukkan sudah benar dan nomor
+              handphone aktif. Jika masalah berlanjut, hubungi layanan
+              pendaftaran kami.
+            </p>
+          </details>
+          <details class="bg-white border rounded-lg p-4">
+            <summary class="font-semibold text-blue-700 cursor-pointer">
+              Saat Isi Formulir Pendaftaran
+            </summary>
+            <p class="mt-2 text-gray-700 text-sm">
+              Isilah semua kolom dengan lengkap sesuai dengan identitas resmi.
+              Gunakan huruf kapital untuk nama lengkap dan pastikan alamat email
+              dapat diakses.
+            </p>
+          </details>
+          <details class="bg-white border rounded-lg p-4">
+            <summary class="font-semibold text-blue-700 cursor-pointer">
+              Belum Ada Nomor Ijazah
+            </summary>
+            <p class="mt-2 text-gray-700 text-sm">
+              Jika nomor ijazah belum diterbitkan, Anda dapat menggunakan nomor
+              surat keterangan lulus sementara kemudian melakukan pembaruan
+              setelah ijazah diterbitkan.
+            </p>
+          </details>
+          <details class="bg-white border rounded-lg p-4">
+            <summary class="font-semibold text-blue-700 cursor-pointer">
+              Tidak Ada Pilihan SMA
+            </summary>
+            <p class="mt-2 text-gray-700 text-sm">
+              Apabila sekolah Anda belum terdaftar, pilih opsi "Sekolah Lain"
+              dan masukkan nama sekolah secara manual pada kolom keterangan
+              tambahan.
+            </p>
+          </details>
+          <details class="bg-white border rounded-lg p-4">
+            <summary class="font-semibold text-blue-700 cursor-pointer">
+              Pelaksanaan CBT
+            </summary>
+            <p class="mt-2 text-gray-700 text-sm">
+              Computer Based Test dilaksanakan secara berkala sesuai jadwal yang
+              ditetapkan. Peserta wajib membawa kartu ujian dan identitas diri
+              pada saat pelaksanaan tes.
+            </p>
+          </details>
+          <details class="bg-white border rounded-lg p-4">
+            <summary class="font-semibold text-blue-700 cursor-pointer">
+              Setelah Mendapat Pengumuman
+            </summary>
+            <p class="mt-2 text-gray-700 text-sm">
+              Peserta yang dinyatakan lulus wajib melakukan registrasi ulang
+              dengan mengunggah berkas persyaratan dan melakukan pembayaran
+              sesuai ketentuan yang berlaku.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
 
-    <df-messenger
-      project-id="pmbuad"
-      agent-id="fe9ee6cc-7a00-42b2-93ea-c1618c7723e1"
-      language-code="id"
-      max-query-length="-1"
-    >
-      <df-messenger-chat-bubble
-        chat-title="chatbotpmb"
-      ></df-messenger-chat-bubble>
-    </df-messenger>
+    <!-- Testimonial section -->
+    <section class="py-12 bg-white" id="testimonial">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-800 mb-8">
+          Apa Kata Mereka
+        </h2>
+        <div
+          class="max-w-3xl mx-auto bg-blue-50 border-l-4 border-blue-600 p-6 rounded-md shadow-sm"
+        >
+          <p class="italic text-gray-700 mb-4">
+            "Selama menjadi mahasiswa saya aktif di berbagai program dan
+            kompetisi. Atas dukungan UAD, saya terpilih sebagai mahasiswa
+            berprestasi hingga ke level nasional. Saya juga kerap mengikuti
+            lomba debat hingga level internasional seperti World University
+            Debating Competition di Thailand. Portofolio saya tersebut kemudian
+            sangat membantu saya untuk mewujudkan mimpi kuliah di luar negeri."
+          </p>
+          <p class="font-semibold text-blue-700">Ika Suciwati, S.Pd.</p>
+          <p class="text-sm text-gray-600">
+            Awardee Australia Awards Scholarships (beasiswa AAS) di Monash
+            University, Australia | PBI UAD ‘15
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-10">
+      <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Contact Info -->
+        <div>
+          <h3 class="font-bold text-xl mb-3">Penerimaan Mahasiswa Baru</h3>
+          <p class="text-sm">
+            UAD Kampus IV (Utama)<br />
+            Gedung Utama Lantai 2<br />
+            Jalan Ahmad Yani, Tamanan, Kec. Banguntapan, Kab. Bantul, Daerah
+            Istimewa Yogyakarta 55191
+          </p>
+          <p class="text-sm mt-3">
+            Telp. 0274‑563 515<br />
+            (S1) : 0853 8500 1960 / 0856 267 1960<br />
+            (S2) : 0878 8282 1960
+          </p>
+        </div>
+        <!-- Waktu Layanan -->
+        <div>
+          <h3 class="font-bold text-xl mb-3">Waktu Layanan Kampus</h3>
+          <p class="text-sm">
+            Layanan Pendaftaran:<br />
+            Online melalui website pmb-online.uad.ac.id<br />
+            Offline Senin – Sabtu (08:00 – 16:00 WIB)
+          </p>
+          <p class="text-sm mt-3">
+            Layanan Ujian Computer Based Test (CBT):<br />
+            Senin – Sabtu (08:00 – 13:00 WIB)
+          </p>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <h3 class="font-bold text-xl mb-3">Pranala Cepat</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:underline">Web UAD</a></li>
+            <li><a href="#" class="hover:underline">Brosur PMB</a></li>
+            <li><a href="#" class="hover:underline">Pengajuan LoA</a></li>
+            <li><a href="#" class="hover:underline">Pengunduran Diri</a></li>
+            <li>
+              <a href="#" class="hover:underline">Pindah Program Studi</a>
+            </li>
+            <li>
+              <a href="#" class="hover:underline"
+                >Jalur Alih Jenjang &amp; Pindahan</a
+              >
+            </li>
+            <li><a href="#" class="hover:underline">Peta Kampus</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 text-center text-sm text-gray-300">
+        &copy; 2025 Universitas Ahmad Dahlan – All rights reserved.
+      </div>
+    </footer>
+
+    <!-- ... Bagian lain dari halaman tetap sama seperti versi sebelumnya ... -->
+
+    <!-- Script -->
+    <script>
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Simple automatic carousel rotation
+      (function () {
+        const slides = document.querySelectorAll("#carousel .carousel-slide");
+        let current = 0;
+        if (slides.length > 1) {
+          setInterval(() => {
+            slides[current].classList.remove("opacity-100");
+            slides[current].classList.add("opacity-0");
+            current = (current + 1) % slides.length;
+            slides[current].classList.remove("opacity-0");
+            slides[current].classList.add("opacity-100");
+          }, 5000);
+        }
+      })();
+    </script>
   </body>
 </html>
